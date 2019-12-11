@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', '4096M');
 
 function multiRequest($data, $options = array()) {
   $curly = array();
@@ -49,6 +50,25 @@ function dailyRequests($p_date, $p_hourOfDay = array()){
     $stringRequests[$i] = "https://www.dcc.ufrrj.br/ocupationdb/api.php?period_from=".$p_date."%20".$p_hourOfDay[$i]."&period_to=".$p_date."%20".$p_hourOfDay[$i + 1];
   }
   return $stringRequests;
+}
+
+function getDailyUsers($requestsOfADay = array()){
+  $macCollect = array();
+  $graphCollect = array(); 
+  for ($i=0; $i < sizeof($requestsOfADay); $i++) { 
+      for ($j=0; $j < sizeof($requestsOfADay[$i]); $j++) {
+          if (!isset($graphCollect[$i."h-".($i+1)."h"][$requestsOfADay[$i][$j]["device_id"]])){
+              $graphCollect[$i."h-".($i+1)."h"][$requestsOfADay[$i][$j]["device_id"]] = 0;
+          }
+          elseif(!in_array($requestsOfADay[$i][$j]["mac"], $macCollect)){
+              $graphCollect[$i."h-".($i+1)."h"][$requestsOfADay[$i][$j]["device_id"]] += 1;
+          }
+          if(!in_array($requestsOfADay[$i][$j]["mac"], $macCollect)){
+            $macCollect[] = $requestsOfADay[$i][$j]["mac"];
+          }
+      }
+  }
+  return $graphCollect;
 }
 
 $hoursOfDay = [
@@ -111,30 +131,11 @@ $macBlacklist = [
   ];
   
 $date = "2019-11-29";
-
 print_r(dailyRequests($date, $hoursOfDay));
 
 $json = multiRequest(dailyRequests($date, $hoursOfDay));
 
-$graphCollect = array(); 
-$macCollect = array();
+print_r(getDailyUsers($json));
 
-for ($i=0; $i < sizeof($json); $i++) { 
-    for ($j=0; $j < sizeof($json[$i]); $j++) {
-        // if(!in_array($json[$i][$j]["mac"], $macBlacklist)) continue;
-        if (!isset($graphCollect[$i."h-".($i+1)."h"][$json[$i][$j]["device_id"]])){
-            $graphCollect[$i."h-".($i+1)."h"][$json[$i][$j]["device_id"]] = 0;
-            
-        }
-        elseif(!in_array($json[$i][$j]["mac"], $macCollect)){
-            $graphCollect[$i."h-".($i+1)."h"][$json[$i][$j]["device_id"]] += 1;
-        }
-        if(!in_array($json[$i][$j]["mac"], $macCollect)){
-          $macCollect[] = $json[$i][$j]["mac"];
-        }
-    }
-}
-
-print_r($graphCollect);
 
 ?>
