@@ -137,5 +137,12 @@ $json = multiRequest(dailyRequests($date, $hoursOfDay));
 
 print_r(getDailyUsers($json));
 
+function getWeeklyUsers($finalDate, $p_hoursOfDay){
+  $initialDate = date("Y-m-d", strtotime($finalDate." -7 days"));
+  for ($i=0; $i < 7; $i++) { 
+    # TODO...
+  }
+}
+
 
 ?>
