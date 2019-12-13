@@ -54,8 +54,9 @@ function dailyRequests($p_date, $p_hourOfDay = array())
     return $stringRequests;
 }
 
-function getDailyUsers($requestsOfADay = array())
+function getDailyUsers($p_date, $p_hoursOfDay)
 {
+    $requestsOfADay = multiRequest(dailyRequests($p_date, $p_hoursOfDay));
     $macCollect = array();
     $graphCollect = array();
     for ($i = 0; $i < sizeof($requestsOfADay); $i++) {
@@ -67,6 +68,25 @@ function getDailyUsers($requestsOfADay = array())
             }
             if (!in_array($requestsOfADay[$i][$j]["mac"], $macCollect)) {
                 $macCollect[] = $requestsOfADay[$i][$j]["mac"];
+            }
+        }
+    }
+    return $graphCollect;
+    // return array("macCollect" => $macCollect, "graphCollect" => $graphCollect)
+}
+
+function getWeeklyUsers($finalDate, $p_hoursOfDay)
+{
+    $graphCollect = array();
+    $initialDate = date("Y-m-d", strtotime($finalDate . " -7 days"));
+    for ($i = 0; $i < 7; $i++) {
+        echo ($i + 1) . "/7\n";
+        $loopDate = date("Y-m-d", strtotime($initialDate . " +" . ($i + 1) . " days"));
+        // $rawDataJson = multiRequest(dailyRequests($loopDate, $p_hoursOfDay));
+        $arrayDaily = getDailyUsers($loopDate, $p_hoursOfDay);
+        foreach ($arrayDaily as $hourInterval => $campusBlocks) {
+            foreach ($campusBlocks as $block => $totalUsers) {
+                $graphCollect[$loopDate][$block] += $totalUsers;
             }
         }
     }
@@ -132,27 +152,7 @@ $macBlacklist = [
     "9",
 ];
 
-$date = "2019-12-10";
-// print_r(dailyRequests($date, $hoursOfDay));
-
-// $json = multiRequest(dailyRequests($date, $hoursOfDay));
-
-// print_r(getDailyUsers($json));
-
-function getWeeklyUsers($finalDate, $p_hoursOfDay)
-{
-    $graphCollect = array();
-    $initialDate = date("Y-m-d", strtotime($finalDate . " -7 days"));
-    for ($i = 0; $i < 7; $i++) {
-        echo ($i + 1) . "/7\n";
-        $json = array();
-        $loopDate = date("Y-m-d", strtotime($initialDate . " +" . $i + 1 . " days"));
-        print_r(dailyRequests($loopDate, $p_hoursOfDay));
-        // $json = multiRequest(dailyRequests($loopDate, $p_hoursOfDay));
-        // $graphCollect = getDailyUsers($json);
-
-    }
-    // return $graphCollect;
-}
-
-getWeeklyUsers($date, $hoursOfDay);
+$date = "2019-11-29";
+print_r(dailyRequests($date, $hoursOfDay));
+// print_r(getWeeklyUsers($date, $hoursOfDay));
+// print_r(getDailyUsers($date, $hoursOfDay));

@@ -1,0 +1,190 @@
+Array
+(
+    [0h-1h] => Array
+        (
+            [pos-graduacao] => 80
+            [informatica] => 7
+            [biblioteca] => 3
+            [administrativo] => 6
+            [multimidia] => 11
+        )
+
+    [1h-2h] => Array
+        (
+            [pos-graduacao] => 36
+            [informatica] => 1
+            [biblioteca] => 1
+            [administrativo] => 0
+            [multimidia] => 0
+        )
+
+    [2h-3h] => Array
+        (
+            [pos-graduacao] => 89
+            [informatica] => 0
+            [administrativo] => 0
+            [biblioteca] => 1
+            [multimidia] => 1
+        )
+
+    [3h-4h] => Array
+        (
+            [pos-graduacao] => 69
+            [informatica] => 1
+            [biblioteca] => 0
+            [administrativo] => 1
+            [multimidia] => 0
+        )
+
+    [4h-5h] => Array
+        (
+            [pos-graduacao] => 11
+            [informatica] => 1
+            [biblioteca] => 0
+            [administrativo] => 0
+            [multimidia] => 0
+        )
+
+    [5h-6h] => Array
+        (
+            [pos-graduacao] => 6
+            [informatica] => 21
+            [biblioteca] => 12
+            [administrativo] => 3
+            [multimidia] => 2
+        )
+
+    [6h-7h] => Array
+        (
+            [pos-graduacao] => 1
+            [informatica] => 25
+            [administrativo] => 26
+            [biblioteca] => 37
+            [multimidia] => 11
+        )
+
+    [7h-8h] => Array
+        (
+            [pos-graduacao] => 16
+            [informatica] => 77
+            [biblioteca] => 167
+            [administrativo] => 67
+            [multimidia] => 32
+        )
+
+    [10h-11h] => Array
+        (
+            [informatica] => 104
+            [pos-graduacao] => 24
+            [biblioteca] => 240
+            [administrativo] => 124
+            [multimidia] => 114
+        )
+
+    [11h-12h] => Array
+        (
+            [pos-graduacao] => 25
+            [informatica] => 36
+            [administrativo] => 46
+            [biblioteca] => 225
+            [multimidia] => 32
+        )
+
+    [13h-14h] => Array
+        (
+            [pos-graduacao] => 13
+            [informatica] => 53
+            [biblioteca] => 200
+            [administrativo] => 78
+            [multimidia] => 62
+        )
+
+    [14h-15h] => Array
+        (
+            [pos-graduacao] => 94
+            [informatica] => 25
+            [biblioteca] => 128
+            [administrativo] => 52
+            [multimidia] => 60
+        )
+
+    [15h-16h] => Array
+        (
+            [pos-graduacao] => 83
+            [informatica] => 28
+            [administrativo] => 57
+            [biblioteca] => 172
+            [multimidia] => 65
+        )
+
+    [16h-17h] => Array
+        (
+            [pos-graduacao] => 79
+            [informatica] => 39
+            [biblioteca] => 171
+            [administrativo] => 63
+            [multimidia] => 60
+        )
+
+    [17h-18h] => Array
+        (
+            [pos-graduacao] => 11
+            [informatica] => 55
+            [biblioteca] => 177
+            [administrativo] => 137
+            [multimidia] => 49
+        )
+
+    [18h-19h] => Array
+        (
+            [pos-graduacao] => 3
+            [informatica] => 46
+            [biblioteca] => 255
+            [administrativo] => 142
+            [multimidia] => 60
+        )
+
+    [19h-20h] => Array
+        (
+            [pos-graduacao] => 7
+            [informatica] => 37
+            [administrativo] => 77
+            [biblioteca] => 257
+            [multimidia] => 49
+        )
+
+    [20h-21h] => Array
+        (
+            [pos-graduacao] => 3
+            [informatica] => 50
+            [administrativo] => 55
+            [biblioteca] => 139
+            [multimidia] => 80
+        )
+
+    [21h-22h] => Array
+        (
+            [pos-graduacao] => 3
+            [informatica] => 32
+            [biblioteca] => 165
+            [administrativo] => 74
+            [multimidia] => 66
+        )
+
+    [22h-23h] => Array
+        (
+            [pos-graduacao] => 1
+            [informatica] => 9
+            [biblioteca] => 27
+            [administrativo] => 25
+            [multimidia] => 4
+        )
+
+    [23h-24h] => Array
+        (
+            [pos-graduacao] => 17
+            [informatica] => 4
+            [administrativo] => 2
+            [biblioteca] => 6
+            [multimidia] => 2
+        )

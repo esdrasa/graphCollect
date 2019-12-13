@@ -1,0 +1,29 @@
+Array
+(
+    [2019-11-23] => Array
+        (
+            [pos-graduacao] => 31
+            [informatica] => 27
+            [administrativo] => 18
+            [biblioteca] => 19
+            [multimidia] => 28
+        )
+
+    [2019-11-24] => Array
+        (
+            [pos-graduacao] => 5
+            [informatica] => 9
+            [administrativo] => 15
+            [biblioteca] => 17
+            [multimidia] => 6
+        )
+
+    [2019-11-25] => Array
+        (
+            [pos-graduacao] => 16
+            [informatica] => 67
+            [biblioteca] => 95
+            [administrativo] => 110
+        )
+
+)
