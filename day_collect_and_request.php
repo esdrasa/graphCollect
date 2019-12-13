@@ -153,6 +153,6 @@ $macBlacklist = [
 ];
 
 $date = "2019-11-29";
-print_r(dailyRequests($date, $hoursOfDay));
-// print_r(getWeeklyUsers($date, $hoursOfDay));
+// print_r(dailyRequests($date, $hoursOfDay));
+print_r(getWeeklyUsers($date, $hoursOfDay));
 // print_r(getDailyUsers($date, $hoursOfDay));

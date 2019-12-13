@@ -2,28 +2,65 @@ Array
 (
     [2019-11-23] => Array
         (
-            [pos-graduacao] => 31
-            [informatica] => 27
-            [administrativo] => 18
-            [biblioteca] => 19
-            [multimidia] => 28
+            [pos-graduacao] => 189
+            [informatica] => 304
+            [biblioteca] => 247
+            [administrativo] => 92
+            [multimidia] => 120
         )
 
     [2019-11-24] => Array
         (
-            [pos-graduacao] => 5
-            [informatica] => 9
-            [administrativo] => 15
-            [biblioteca] => 17
-            [multimidia] => 6
+            [pos-graduacao] => 324
+            [informatica] => 758
+            [administrativo] => 909
+            [biblioteca] => 1129
+            [multimidia] => 709
         )
 
     [2019-11-25] => Array
         (
-            [pos-graduacao] => 16
-            [informatica] => 67
-            [biblioteca] => 95
-            [administrativo] => 110
+            [pos-graduacao] => 110
+            [informatica] => 278
+            [biblioteca] => 452
+            [administrativo] => 718
+            [multimidia] => 40
+        )
+
+    [2019-11-26] => Array
+        (
+            [informatica] => 574
+            [pos-graduacao] => 354
+            [biblioteca] => 722
+            [administrativo] => 613
+            [multimidia] => 77
+        )
+
+    [2019-11-27] => Array
+        (
+            [pos-graduacao] => 79
+            [informatica] => 138
+            [biblioteca] => 302
+            [administrativo] => 131
+            [multimidia] => 122
+        )
+
+    [2019-11-28] => Array
+        (
+            [pos-graduacao] => 129
+            [informatica] => 116
+            [biblioteca] => 407
+            [administrativo] => 107
+            [multimidia] => 129
+        )
+
+    [2019-11-29] => Array
+        (
+            [pos-graduacao] => 316
+            [informatica] => 120
+            [biblioteca] => 273
+            [administrativo] => 179
+            [multimidia] => 133
         )
 
 )
