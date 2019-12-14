@@ -49,7 +49,7 @@ function dailyRequests($p_date, $p_hourOfDay = array())
 {
     $stringRequests = array();
     for ($i = 0; $i < sizeof($p_hourOfDay) - 1; $i++) {
-        $stringRequests[$i] = "https://www.dcc.ufrrj.br/ocupationdb/api.php?period_from=" . $p_date . "%20" . $p_hourOfDay[$i] . "&period_to=" . $p_date . "%20" . $p_hourOfDay[$i + 1];
+        $stringRequests[$i] = "https://www.dcc.ufrrj.br/ocupationdb/api.php?period_from=" . $p_date . "%20" . $p_hourOfDay[$i] . "&period_to=" . $p_date . "%20" . $p_hourOfDay[$i + 1] . "&type=data";
     }
     return $stringRequests;
 }
@@ -72,7 +72,27 @@ function getDailyUsers($p_date, $p_hoursOfDay)
         }
     }
     return $graphCollect;
-    // return array("macCollect" => $macCollect, "graphCollect" => $graphCollect)
+}
+
+function getUsersOfADay($p_date, $p_hoursOfDay)
+{
+    $requestsOfADay = multiRequest(dailyRequests($p_date, $p_hoursOfDay));
+    $macCollect = array();
+    $macBlockCollect = array();
+    $graphCollect = array();
+    foreach ($requestsOfADay as $hour => $arrayOfItems) {
+        foreach ($arrayOfItems as $value) {
+            if (!isset($macBlockCollect[$value["device_id"]])) {
+                $macBlockCollect[$value["device_id"]] = 1;
+            } elseif (!in_array($value["mac"], $macCollect)) {
+                $macBlockCollect[$value["device_id"]] += 1;
+            }
+            if (!in_array($value["mac"], $macCollect)) {
+                $macCollect[] = $value["mac"];
+            }
+        }
+        return array("macCollect" => $macCollect, "macBlockCollect" => $macBlockCollect);
+    }
 }
 
 function getWeeklyUsers($finalDate, $p_hoursOfDay)
@@ -82,8 +102,7 @@ function getWeeklyUsers($finalDate, $p_hoursOfDay)
     for ($i = 0; $i < 7; $i++) {
         echo ($i + 1) . "/7\n";
         $loopDate = date("Y-m-d", strtotime($initialDate . " +" . ($i + 1) . " days"));
-        // $rawDataJson = multiRequest(dailyRequests($loopDate, $p_hoursOfDay));
-        $arrayDaily = getDailyUsers($loopDate, $p_hoursOfDay);
+        $arrayDaily = getUsersOfADay($loopDate, $p_hoursOfDay);
         foreach ($arrayDaily as $hourInterval => $campusBlocks) {
             foreach ($campusBlocks as $block => $totalUsers) {
                 $graphCollect[$loopDate][$block] += $totalUsers;
@@ -152,7 +171,9 @@ $macBlacklist = [
     "9",
 ];
 
-$date = "2019-11-29";
+$date = "2019-12-10";
 // print_r(dailyRequests($date, $hoursOfDay));
-print_r(getWeeklyUsers($date, $hoursOfDay));
-// print_r(getDailyUsers($date, $hoursOfDay));
+print_r(getUsersOfADay($date, $hoursOfDay)[$macBlockCollect]);
+print_r(getUsersOfADay($date, $hoursOfDay)[$macCollect]);
+// print_r(getWeeklyUsers($date, $hoursOfDay));
+// print_r(getUsersOfADay($date, $hoursOfDay));
